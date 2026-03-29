@@ -4,12 +4,6 @@ public class RationalScalar implements Scalar {
     private int numerator;
     private int denominator;
 
-
-    @Override
-    public int value() {
-        return 0;
-    }
-
     @Override
     public Scalar add(Scalar s) {
         return null;
