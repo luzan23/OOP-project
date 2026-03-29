@@ -4,6 +4,11 @@ public class RationalScalar implements Scalar {
     private int numerator;
     private int denominator;
 
+    public RationalScalar(int numerator, int denominator){
+        this.numerator=numerator;
+        this.denominator=denominator;
+    }
+
     @Override
     public Scalar add(Scalar s) {
         return null;
@@ -21,12 +26,22 @@ public class RationalScalar implements Scalar {
 
     @Override
     public Scalar power(int exponent) {
-        return null;
+        int newNum= (int)Math.pow(this.numerator, exponent);
+        int newDen= (int)Math.pow(this.denominator, exponent);
+
+        Scalar ans = new RationalScalar(newNum, newDen);
+        return ans;
     }
 
     @Override
     public int sign() {
-        return 0;
+        if ( (this.denominator<0 && this.numerator<0) ||
+                (this.denominator>0 && this.numerator>0))
+            return 1;
+        else if( (this.denominator<0 && this.numerator>0) ||
+                (this.denominator>0 && this.numerator<0))
+            return -1;
+        else return 0;
     }
 
     public Scalar reduce(){
