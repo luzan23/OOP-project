@@ -34,6 +34,11 @@ public class RationalScalar implements Scalar {
     }
 
     @Override
+    public int value() {
+        return 0;
+    }
+
+    @Override
     public int sign() {
         if ( (this.denominator<0 && this.numerator<0) ||
                 (this.denominator>0 && this.numerator>0))
