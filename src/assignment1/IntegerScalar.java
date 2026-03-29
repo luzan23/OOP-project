@@ -1,6 +1,6 @@
 package assignment1;
 
-public class intScalar implements Scalar {
+public class IntegerScalar implements Scalar {
     @Override
     public Scalar add(Scalar s) {
         return null;
