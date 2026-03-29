@@ -3,34 +3,60 @@ package assignment1;
 public class IntegerScalar implements Scalar {
     private int number;
 
+    public IntegerScalar(int number) {
+        this.number = number;
+    }
+
     @Override
     public Scalar add(Scalar s) {
-        return null;
+        Scalar ans = new IntegerScalar(number + s.value());
+        return ans;
+    }
+
+    public int value() {
+        return number;
     }
 
     @Override
     public Scalar mul(Scalar s) {
-        return null;
+        Scalar ans = new IntegerScalar(number * s.value());
+        return ans;
     }
-
     @Override
     public Scalar neg() {
-        return null;
+        Scalar ans = new IntegerScalar(-1*number);
+        return ans;
     }
 
     @Override
     public Scalar power(int exponent) {
-        return null;
+        int ans =1;
+        for (int i=0; i<exponent; i++){
+            ans = ans * number;
+        }
+        Scalar result = new IntegerScalar(ans);
+        return result;
     }
 
     @Override
     public int sign() {
-        return 0;
+        if (number >0)
+            return 1;
+        if (number<0)
+            return -1;
+        else
+            return 0;
     }
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if (!(obj instanceof Scalar))
+            return false;
+        Scalar instance = (IntegerScalar) obj;
+        if (instance.value() == number)
+            return true;
+        else
+            return false;
     }
 
     @Override
