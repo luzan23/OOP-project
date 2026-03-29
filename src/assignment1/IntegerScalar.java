@@ -1,6 +1,10 @@
+<<<<<<<< HEAD:src/assignment1/IntegerScalar.java
 package assignment1;
 
 public class IntegerScalar implements Scalar {
+========
+public class IntegerScalar implements  Scalar{
+>>>>>>>> c351c7056ce44b1a4ed6b35a5ae6aebdce617ffa:src/IntegerScalar.java
     @Override
     public Scalar add(Scalar s) {
         return null;
