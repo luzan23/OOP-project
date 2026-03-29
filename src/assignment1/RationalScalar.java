@@ -1,6 +1,9 @@
 package assignment1;
 
 public class RationalScalar implements Scalar {
+    private int numerator;
+    private int denominator;
+
     @Override
     public Scalar add(Scalar s) {
         return null;
@@ -32,11 +35,16 @@ public class RationalScalar implements Scalar {
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if(obj instanceof RationalScalar){
+            int num=((RationalScalar) obj).numerator;
+            int den=((RationalScalar) obj).denominator;
+            return (num == this.numerator && den == this.denominator);
+        }
+        return false;
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        return this.numerator + " / " + this.denominator;
     }
 }
