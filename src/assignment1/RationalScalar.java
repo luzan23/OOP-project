@@ -1,4 +1,6 @@
-public class intScalar implements  Scalar{
+package assignment1;
+
+public class RationalScalar implements Scalar {
     @Override
     public Scalar add(Scalar s) {
         return null;
@@ -22,6 +24,10 @@ public class intScalar implements  Scalar{
     @Override
     public int sign() {
         return 0;
+    }
+
+    public Scalar reduce(){
+        return null;
     }
 
     @Override

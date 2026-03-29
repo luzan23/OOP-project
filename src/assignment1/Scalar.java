@@ -1,3 +1,5 @@
+package assignment1;
+
 public interface Scalar {
     Scalar add(Scalar s);
     Scalar mul(Scalar s);

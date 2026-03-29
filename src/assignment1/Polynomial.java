@@ -1,13 +1,20 @@
-public class Monomial {
+package assignment1;
+import java.util.ArrayList;
+import java.util.Collection;
 
-    private int exponent;
-    private Scalar coefficient;
+public class Polynomial {
 
-    public Monomial add(Monomial m){
+    private Collection<Monomial> polynomial;
+
+    public Polynomial(){
+        this.polynomial= new ArrayList<>();
+    }
+
+    public Polynomial add(Polynomial p){
         return null;
     }
 
-    public Monomial mul(Monomial m){
+    public Polynomial mul(Polynomial p){
         return null;
     }
 

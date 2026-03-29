@@ -1,6 +1,8 @@
-public class Polynomial {
+package assignment1;
+public class Monomial {
 
-    private String equation;
+    private int exponent;
+    private Scalar coefficient;
 
     public Monomial add(Monomial m){
         return null;
