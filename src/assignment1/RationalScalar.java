@@ -1,8 +1,12 @@
 package assignment1;
 
 public class RationalScalar implements Scalar {
+    private int numerator;
+    private int denominator;
+
     @Override
     public Scalar add(Scalar s) {
+
         return null;
     }
 
