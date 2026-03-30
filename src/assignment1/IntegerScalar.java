@@ -7,6 +7,10 @@ public class IntegerScalar implements Scalar {
         this.number = number;
     }
 
+    public int getNumber() {
+        return number;
+    }
+
     @Override
     public Scalar add(Scalar s) {
         return null;
@@ -41,6 +45,16 @@ public class IntegerScalar implements Scalar {
             return -1;
         else
             return 0;
+    }
+
+    @Override
+    public Scalar addInteger(IntegerScalar s) {
+        return null;
+    }
+
+    @Override
+    public Scalar addRational(RationalScalar s) {
+        return null;
     }
 
     public boolean equals2(Object obj) {
