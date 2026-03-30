@@ -13,12 +13,12 @@ public class IntegerScalar implements Scalar {
 
     @Override
     public Scalar add(Scalar s) {
-        return null;
+        return s.addInteger(this);
     }
 
     @Override
     public Scalar mul(Scalar s) {
-        return null;
+        return s.mul(this);
     }
 
     @Override
@@ -49,28 +49,44 @@ public class IntegerScalar implements Scalar {
 
     @Override
     public Scalar addInteger(IntegerScalar s) {
-        return null;
+        Scalar ans = new IntegerScalar(number+s.getNumber());
+        return ans;
     }
 
     @Override
     public Scalar addRational(RationalScalar s) {
-        return null;
+        Scalar ans = new RationalScalar(s.getNumerator()+number*s.getDenominator(),s.getDenominator());
+        return ans;
     }
 
-    public boolean equals2(Object obj) {
-        if(!(obj instanceof Scalar))
-            return false;
-        else {
-            Scalar other= (Scalar)obj;
-            return (this.add(other.neg()).sign())==0;
-        }
+    @Override
+    public Scalar mulInteger(IntegerScalar s) {
+        IntegerScalar ans =new IntegerScalar(s.getNumber()*number);
+        return ans;
     }
+
+    @Override
+    public Scalar mulRational(RationalScalar s) {
+        RationalScalar ans = new RationalScalar(number*s.getNumerator(),s.getDenominator());
+        return ans;
+    }
+
 
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof Scalar))
             return false;
-        return false;
+        if (obj instanceof RationalScalar) {
+            RationalScalar instance = (RationalScalar) obj;
+            if (instance.getNumerator() % instance.getDenominator() == 0)
+                return number == instance.getNumerator() / instance.getDenominator();
+            else
+                return false;
+        }
+        else {
+            IntegerScalar instance = (IntegerScalar) obj;
+            return number == instance.getNumber();
+        }
     }
 
         @Override
