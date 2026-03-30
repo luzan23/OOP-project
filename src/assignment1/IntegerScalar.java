@@ -9,18 +9,12 @@ public class IntegerScalar implements Scalar {
 
     @Override
     public Scalar add(Scalar s) {
-        Scalar ans = new IntegerScalar(number + s.value());
-        return ans;
-    }
-
-    public int value() {
-        return number;
+        return null;
     }
 
     @Override
     public Scalar mul(Scalar s) {
-        Scalar ans = new IntegerScalar(number * s.value());
-        return ans;
+        return null;
     }
 
     @Override
@@ -53,14 +47,6 @@ public class IntegerScalar implements Scalar {
     public boolean equals(Object obj) {
         if (!(obj instanceof Scalar))
             return false;
-        if (obj instanceof RationalScalar) {
-            Scalar instance = (RationalScalar) obj;
-            return instance.value() == number;
-        }
-        else if (obj instanceof IntegerScalar) {
-            Scalar instance = (IntegerScalar) obj;
-            return instance.value() == number;
-        }
         return false;
     }
 
