@@ -43,6 +43,15 @@ public class IntegerScalar implements Scalar {
             return 0;
     }
 
+    public boolean equals2(Object obj) {
+        if(!(obj instanceof Scalar))
+            return false;
+        else {
+            Scalar other= (Scalar)obj;
+            return (this.add(other.neg()).sign())==0;
+        }
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof Scalar))
