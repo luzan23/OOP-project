@@ -58,9 +58,19 @@ public class RationalScalar implements Scalar {
         if(s.getDenominator()==getDenominator()){
             ans=new RationalScalar(s.numerator+getNumerator(), getDenominator());
         }
-        else {
+        else
+            return null;
+        return null;
+    }
 
-        }
+    @Override
+    public Scalar mulRational(RationalScalar s) {
+        return null;
+    }
+
+    @Override
+    public Scalar mulInteger(IntegerScalar s) {
+        return null;
     }
 
     public Scalar reduce(){
