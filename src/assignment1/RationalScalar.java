@@ -5,6 +5,8 @@ public class RationalScalar implements Scalar {
     private int denominator;
 
     public RationalScalar(int numerator, int denominator){
+        if(denominator==0)
+            throw new IllegalArgumentException("denominator cant be 0");
         this.numerator=numerator;
         this.denominator=denominator;
     }
@@ -127,6 +129,10 @@ public class RationalScalar implements Scalar {
 
     @Override
     public String toString() {
-        return this.numerator + " / " + this.denominator;
+        String ans="";
+        if(sign()==-1)
+            ans+="-";
+        ans = this.numerator + " / " + this.denominator;
+        return ans;
     }
 }

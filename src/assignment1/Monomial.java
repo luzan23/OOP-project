@@ -9,6 +9,14 @@ public class Monomial {
         this.coefficient = coefficient;
     }
 
+    public int getExponent(){
+        return exponent;
+    }
+
+    public Scalar getCoefficient(){
+        return this.coefficient;
+    }
+
     public Monomial add(Monomial m){
         if (exponent != m.exponent)
             return null;
@@ -56,6 +64,10 @@ public class Monomial {
 
     @Override
     public String toString() {
-        return "" + coefficient +"x"+"^"+ exponent;
+        if(getCoefficient().sign()==0)
+            return "0";
+        if(getExponent()==0)
+            return coefficient.toString();
+        else return coefficient.toString() +"x"+"^"+ exponent;
     }
 }

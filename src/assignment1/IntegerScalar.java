@@ -18,7 +18,7 @@ public class IntegerScalar implements Scalar {
 
     @Override
     public Scalar mul(Scalar s) {
-        return s.mul(this);
+        return s.mulInteger(this);
     }
 
     @Override
@@ -85,7 +85,11 @@ public class IntegerScalar implements Scalar {
 
         @Override
         public String toString() {
-            return "" + number ;
+        String ans="";
+        if(sign()==-1)
+            ans+="-";
+        ans+="" + number ;
+        return ans;
         }
     }
 
