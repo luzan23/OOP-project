@@ -76,17 +76,11 @@ public class IntegerScalar implements Scalar {
     public boolean equals(Object obj) {
         if (!(obj instanceof Scalar))
             return false;
-        if (obj instanceof RationalScalar) {
-            RationalScalar instance = (RationalScalar) obj;
-            if (instance.getNumerator() % instance.getDenominator() == 0)
-                return number == instance.getNumerator() / instance.getDenominator();
-            else
-                return false;
+        else{
+            Scalar other = (Scalar) obj;
+            return (this.add(other.neg()).sign() ==0);
         }
-        else {
-            IntegerScalar instance = (IntegerScalar) obj;
-            return number == instance.getNumber();
-        }
+
     }
 
         @Override

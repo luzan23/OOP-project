@@ -46,7 +46,12 @@ public class Monomial {
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if (!(obj instanceof Monomial))
+            return false;
+        else{
+            Monomial other = (Monomial) obj;
+            return other.exponent==exponent && other.coefficient.equals(coefficient);
+        }
     }
 
     @Override
