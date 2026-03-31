@@ -6,9 +6,10 @@ public interface Scalar {
     Scalar neg();
     Scalar power(int exponent);
     int sign();
-
     Scalar addInteger(IntegerScalar s);
     Scalar addRational(RationalScalar s);
+    Scalar mulInteger(IntegerScalar s);
+    Scalar mulRational(RationalScalar s);
     @Override
     boolean equals(Object o);
     @Override

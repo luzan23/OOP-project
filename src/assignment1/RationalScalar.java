@@ -71,6 +71,7 @@ public class RationalScalar implements Scalar {
             int b=getDenominator();
             ans=new RationalScalar(a,b);
         }
+<<<<<<< HEAD
         else {
             int b=getDenominator();
             int d=s.getDenominator();
@@ -82,6 +83,21 @@ public class RationalScalar implements Scalar {
             ans = new RationalScalar(ansNum, lcm);
         }
         return ans.reduce();
+=======
+        else
+            return null;
+        return null;
+    }
+
+    @Override
+    public Scalar mulRational(RationalScalar s) {
+        return null;
+    }
+
+    @Override
+    public Scalar mulInteger(IntegerScalar s) {
+        return null;
+>>>>>>> fbd16fd57871d0b382f17c585b4aba8438cbf67e
     }
 
     public Scalar reduce(){
