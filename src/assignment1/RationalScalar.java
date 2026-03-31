@@ -19,7 +19,7 @@ public class RationalScalar implements Scalar {
 
     @Override
     public Scalar add(Scalar s) {
-        return null;
+        return s.addRational(this);
     }
 
     @Override
@@ -36,12 +36,23 @@ public class RationalScalar implements Scalar {
 
     @Override
     public Scalar power(int exponent) {
-        return null;
+        double num= getNumerator();
+        double den= getDenominator();
+        int newNum= (int) Math.pow(num, exponent);
+        int newDen= (int) Math.pow(den, exponent);
+        RationalScalar ans= new RationalScalar(newNum, newDen);
+        return ans.reduce();
     }
 
     @Override
     public int sign() {
-        return 0;
+        if((getNumerator() >0 && getDenominator()>0) ||
+                (getNumerator()<0 && getDenominator()<0))
+                return 1;
+        else if((getNumerator()<0 && getDenominator()>0) ||
+                (getNumerator()>0 && getDenominator()<0))
+            return -1;
+        else return 0;
     }
 
     @Override
@@ -49,30 +60,52 @@ public class RationalScalar implements Scalar {
         RationalScalar sRat= new RationalScalar(s.getNumber()*getDenominator(), getDenominator());
         int newNum = sRat.getNumerator() + getNumerator();
         RationalScalar ans = new RationalScalar(newNum, getDenominator());
-        return ans;
+        return ans.reduce();
     }
 
     @Override
     public Scalar addRational(RationalScalar s) {
-        Scalar ans;
+        RationalScalar ans;
         if(s.getDenominator()==getDenominator()){
-            ans=new RationalScalar(s.numerator+getNumerator(), getDenominator());
+            int a= s.numerator+getNumerator();
+            int b=getDenominator();
+            ans=new RationalScalar(a,b);
         }
         else {
-
+            int b=getDenominator();
+            int d=s.getDenominator();
+            int gcd= gcd(b,d);
+            int lcm=(b/gcd)*d;
+            int mul1= lcm/b;
+            int mul2= lcm/d;
+            int ansNum=(getNumerator()*mul1) + (s.getNumerator()*mul2);
+            ans = new RationalScalar(ansNum, lcm);
         }
+        return ans.reduce();
     }
 
     public Scalar reduce(){
-        return null;
+        int gcd = gcd(getNumerator(), getDenominator());
+        Scalar ans = new RationalScalar(getNumerator()/gcd, getDenominator()/gcd);
+        return ans;
+    }
+
+    private int gcd(int a, int b){
+        if(b==0)
+            return a;
+        return gcd(b, a%b);
     }
 
     @Override
     public boolean equals(Object obj) {
-        if(obj instanceof RationalScalar){
-            int num=((RationalScalar) obj).numerator;
-            int den=((RationalScalar) obj).denominator;
+        if (obj instanceof RationalScalar) {
+            int num = ((RationalScalar) obj).numerator;
+            int den = ((RationalScalar) obj).denominator;
             return (num == this.numerator && den == this.denominator);
+        } else {
+            if (obj instanceof IntegerScalar && reduce() instanceof IntegerScalar) {
+                return ((IntegerScalar) obj).getNumber() == ((IntegerScalar) reduce()).getNumber();
+            }
         }
         return false;
     }
