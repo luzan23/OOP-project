@@ -135,7 +135,7 @@ public class RationalScalar implements Scalar {
         String ans="";
         if(sign()==-1)
             ans+="-";
-        ans = this.numerator + " / " + this.denominator;
+        ans = ans + this.numerator + " / " + this.denominator;
         return ans;
     }
 }

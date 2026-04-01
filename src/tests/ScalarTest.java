@@ -39,13 +39,19 @@ public class ScalarTest {
         assertEquals("1", s1.mul(s2).toString());
         assertEquals("1", s2.mul(s1).toString());
 
-
-
-
-
     }
     @Test
     public void testNeg(){
+        Scalar s1 = new IntegerScalar(0);
+        assertEquals("0", s1.neg().toString());
+        s1 = new RationalScalar(0,2);
+        assertEquals("0", s1.neg().toString());
+        s1 = new IntegerScalar(5);
+        assertEquals("-5", s1.neg().toString());
+        s1 = new RationalScalar(-1,4);
+        assertEquals("1 / 4", s1.neg().toString() );
+        s1 = new RationalScalar(1,9);
+        assertEquals("-1 / 9", s1.neg().toString());
 
     }
     @Test
@@ -54,6 +60,7 @@ public class ScalarTest {
     }
     @Test
     public void testEquals(){
+
 
     }
      @Test

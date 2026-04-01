@@ -90,8 +90,6 @@ public class IntegerScalar implements Scalar {
         @Override
         public String toString() {
         String ans="";
-        if(sign()==-1)
-            ans+="-";
         ans+="" + number ;
         return ans;
         }
