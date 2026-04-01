@@ -103,7 +103,15 @@ public class RationalScalar implements Scalar {
 
     public Scalar reduce(){
         int gcd = gcd(getNumerator(), getDenominator());
-        Scalar ans = new RationalScalar(getNumerator()/gcd, getDenominator()/gcd);
+        int newNum=getNumerator()/gcd;
+        int newDen=getDenominator()/gcd;
+        Scalar ans = new RationalScalar(newNum, newDen);
+        if(newDen==1){
+            ans = new IntegerScalar(newNum);
+        }
+        else if(newDen==newNum){
+            ans=new IntegerScalar(1);
+        }
         return ans;
     }
 
@@ -115,14 +123,9 @@ public class RationalScalar implements Scalar {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof RationalScalar) {
-            int num = ((RationalScalar) obj).numerator;
-            int den = ((RationalScalar) obj).denominator;
-            return (num == this.numerator && den == this.denominator);
-        } else {
-            if (obj instanceof IntegerScalar && reduce() instanceof IntegerScalar) {
-                return ((IntegerScalar) obj).getNumber() == ((IntegerScalar) reduce()).getNumber();
-            }
+        if (obj instanceof Scalar) {
+            Scalar other = (Scalar) obj;
+            return (this.add(other.neg()).sign() ==0);
         }
         return false;
     }
