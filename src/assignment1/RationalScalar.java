@@ -105,6 +105,12 @@ public class RationalScalar implements Scalar {
         int gcd = gcd(getNumerator(), getDenominator());
         int newNum=getNumerator()/gcd;
         int newDen=getDenominator()/gcd;
+
+        if (newDen < 0) {
+            newNum = newNum * -1;
+            newDen = newDen * -1;
+        }
+
         Scalar ans = new RationalScalar(newNum, newDen);
         if(newDen==1){
             ans = new IntegerScalar(newNum);
@@ -117,7 +123,7 @@ public class RationalScalar implements Scalar {
 
     private int gcd(int a, int b){
         if(b==0)
-            return a;
+            return Math.abs(a);
         return gcd(b, a%b);
     }
 
@@ -132,10 +138,7 @@ public class RationalScalar implements Scalar {
 
     @Override
     public String toString() {
-        String ans="";
-        if(sign()==-1)
-            ans+="-";
-        ans = ans + this.numerator + " / " + this.denominator;
+        String ans = this.numerator + " / " + this.denominator;
         return ans;
     }
 }

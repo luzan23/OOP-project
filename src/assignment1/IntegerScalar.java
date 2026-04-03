@@ -80,7 +80,7 @@ public class IntegerScalar implements Scalar {
             return (num%den==0 && num/den == number);
         } else {
             if (obj instanceof IntegerScalar) {
-                return ((IntegerScalar) obj).getNumber() == ((IntegerScalar) obj).getNumber();
+                return ((IntegerScalar) obj).getNumber() == getNumber();
             }
         }
         return false;
@@ -93,5 +93,6 @@ public class IntegerScalar implements Scalar {
         ans+="" + number ;
         return ans;
         }
+
     }
 
