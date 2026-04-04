@@ -3,13 +3,9 @@ package tests;
 import assignment1.IntegerScalar;
 import assignment1.RationalScalar;
 import assignment1.Scalar;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
-import java.util.concurrent.RecursiveTask;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ScalarTest {
     @Test
@@ -66,15 +62,15 @@ public class ScalarTest {
     @Test
     public void testEquals(){
         Scalar s1 = new IntegerScalar(9);
-        assertEquals(false, s1.equals(9));
+        assertFalse(s1.equals(9));
         Scalar s2= new RationalScalar(81, 9);
-        assertEquals(true, s1.equals(s2));
+        assertTrue(s1.equals(s2));
         s2= new RationalScalar(7,8);
-        assertEquals(false, s1.equals(s2));
+        assertFalse(s1.equals(s2));
         s2= new IntegerScalar(7);
-        assertEquals(false, s1.equals(s2));
+        assertFalse(s1.equals(s2));
         s1=new RationalScalar(7, 4);
-        assertEquals(false, s1.equals(7/4));
+        assertFalse(s1.equals(7 / 4));
     }
 
 

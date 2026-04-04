@@ -68,6 +68,10 @@ public class Monomial {
             return "0";
         if(getExponent()==0)
             return coefficient.toString();
-        else return coefficient.toString() +"x"+"^"+ exponent;
+        Scalar one=new IntegerScalar(1);
+        if(getCoefficient().equals(one)){
+            return "x^"+getExponent();
+        }
+        else return coefficient.toString() +"x"+"^"+ getExponent();
     }
 }

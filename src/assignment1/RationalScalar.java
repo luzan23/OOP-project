@@ -138,7 +138,7 @@ public class RationalScalar implements Scalar {
 
     @Override
     public String toString() {
-        String ans = this.numerator + " / " + this.denominator;
+        String ans = "("+this.numerator + "/" + this.denominator+")";
         return ans;
     }
 }
