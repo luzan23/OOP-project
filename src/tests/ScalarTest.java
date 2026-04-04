@@ -57,6 +57,11 @@ public class ScalarTest {
     }
     @Test
     public void testPower(){
+        Scalar s1 = new IntegerScalar(2);
+        assertEquals("32",s1.power(5).toString());
+        s1 = new RationalScalar(-3,2);
+        assertEquals("-"+"27 / 8", s1.power(3).toString());
+        assertEquals("9 / 4", s1.power(2).toString());
 
     }
     @Test
@@ -79,6 +84,9 @@ public class ScalarTest {
         Scalar s1=new RationalScalar(3, 2);
         assertEquals("3 / 2", s1.toString());
         s1= new RationalScalar(-3, -2);
+        assertEquals("-3 / -2" , s1.toString());
+        s1 = new RationalScalar(4,-3);
+        assertEquals("4 / -3", s1.toString());
 
 
      }
