@@ -1,7 +1,5 @@
 package assignment1;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.*;
 
 public class Polynomial {
 
@@ -69,22 +67,36 @@ public class Polynomial {
 
     public Polynomial mul(Polynomial p){
         Polynomial multi=new Polynomial();
+        TreeMap<Integer, Monomial> mergedTerms = new TreeMap<>();
 
-        Iterator<Monomial> thisItr=this.polynomial.iterator();
-        Monomial currThis;
+        for (Monomial currGiven: p.polynomial) {
+            for (Monomial currHere : this.polynomial) {
+                Monomial result = currGiven.mul(currHere);
+                int resExp = result.getExponent();
+                if (mergedTerms.containsKey(resExp)) {
+                    Monomial oldVal = mergedTerms.get(resExp);
+                    Monomial sumRes = result.add(oldVal);
+                    mergedTerms.put(resExp, sumRes);
+                } else {
+                    mergedTerms.put(resExp,result);
 
-        while(thisItr.hasNext()){
-            currThis=thisItr.next();
-            Iterator<Monomial> pItr=p.polynomial.iterator();
-            Monomial currP;
-            while (pItr.hasNext()){
-                currP=pItr.next();
-                Monomial res=currThis.mul(currP);
-                multi.polynomial.add(currThis.mul(currP));
+                }
             }
         }
-        //כינוס איברים
-        return multi;
+        if (!mergedTerms.isEmpty()) {
+            int maxExp = mergedTerms.lastKey();
+            for (int i = 0; i <= maxExp; i++) {
+                if (mergedTerms.containsKey(i)) {
+                    Monomial current = mergedTerms.get(i);
+                    multi.polynomial.add(current);
+                } else {
+                    Scalar zero = new IntegerScalar(0);
+                    Monomial zeroMon = new Monomial(i, zero);
+                    multi.polynomial.add(zeroMon);
+                }
+            }
+        }
+        return  multi;
     }
 
     public Scalar evaluate(Scalar s){
