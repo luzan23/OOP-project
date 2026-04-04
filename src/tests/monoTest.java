@@ -15,7 +15,7 @@ public class monoTest {
         Scalar coe = new IntegerScalar(3);
         Monomial m1 = new Monomial(2, coe);
         Monomial m2 = new Monomial(3, coe);
-        assertNull(m1.add(m2)); // Exponents are different
+        assertNull(m1.add(m2));
 
         Scalar coe1 = new IntegerScalar(9);
         m2 = new Monomial(2, coe1);
@@ -29,14 +29,13 @@ public class monoTest {
 
         coe1 = new IntegerScalar(4);
         m2 = new Monomial(3, coe1);
-        assertEquals("(19/4)x^3", m1.add(m2).toString()); // Assumes format "19/4x^3" without parentheses based on standard toString implementation
+        assertEquals("(19/4)x^3", m1.add(m2).toString());
     }
 
     @Test
     public void testEvaluate() {
         Scalar coe = new IntegerScalar(3);
         Monomial m1 = new Monomial(2, coe);
-        // Evaluating 3x^2 at x=3 -> 3 * (3^2) = 27
         assertEquals("27", m1.evaluate(coe).toString());
 
         coe = new RationalScalar(2, 3);
