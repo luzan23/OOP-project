@@ -102,7 +102,7 @@ public class Polynomial {
     public Scalar evaluate(Scalar s){
         Scalar ans =new IntegerScalar(0);
         for(Monomial mono : this.polynomial){
-            ans.add(mono.evaluate(s));
+           ans= ans.add(mono.evaluate(s));
         }
         return ans;
     }
