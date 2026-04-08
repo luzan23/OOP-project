@@ -132,8 +132,9 @@ public class Polynomial {
                         return false;
                 }
             }
+            return true;
         }
-        return true;
+        return false;
     }
 
     @Override

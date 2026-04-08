@@ -54,7 +54,7 @@ public class polynomialTest {
         assertTrue(p1.equals(p2));
         assertFalse(p1.equals(p3));
         assertFalse(p3.equals(p4));
-       assertFalse(p3.equals(null));
+        assertFalse(p3.equals(null));
         assertFalse(p4.equals("3x^2"+"2x^1+5"));
     }
     @Test
@@ -62,7 +62,7 @@ public class polynomialTest {
         Polynomial p2 = new Polynomial("1 1/2 5");
         Polynomial p3 =new Polynomial("1 2 6");
         assertEquals("5x^2+(1/2)x^1+1", p2.toString());
-        assertEquals("6x^2+2x^1+1k", p3.toString());
+        assertEquals("6x^2+2x^1+1", p3.toString());
 
     }
 
