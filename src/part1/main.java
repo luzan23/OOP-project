@@ -1,0 +1,12 @@
+package assignment1;
+
+public class main {
+    public static void main(String[] args){
+        Polynomial x = new Polynomial("2 3 4");
+        System.out.println(x.add(new Polynomial("2 5 6")));
+        System.out.println(x.equals(new Polynomial("2 3 4")));
+        System.out.println(new realScalar(0.456).add(new RationalScalar(23,9)).toString());
+        System.out.println(new Monomial(2,new realScalar(0.534)));
+    }
+
+}
