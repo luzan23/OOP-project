@@ -60,6 +60,12 @@ public class IntegerScalar implements Scalar {
     }
 
     @Override
+    public Scalar addReal(realScalar s) {
+        Scalar ans = new realScalar(s.getNumber() +number );
+        return ans;
+    }
+
+    @Override
     public Scalar mulInteger(IntegerScalar s) {
         IntegerScalar ans =new IntegerScalar(s.getNumber()*number);
         return ans;
@@ -69,6 +75,12 @@ public class IntegerScalar implements Scalar {
     public Scalar mulRational(RationalScalar s) {
         RationalScalar ans = new RationalScalar(number*s.getNumerator(),s.getDenominator());
         return ans.reduce();
+    }
+
+    @Override
+    public Scalar mulReal(realScalar s) {
+        Scalar ans = new realScalar(s.getNumber() * number );
+        return ans;
     }
 
 
