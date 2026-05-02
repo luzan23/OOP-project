@@ -87,9 +87,9 @@ public class RationalScalar implements Scalar {
     }
 
     @Override
-    public Scalar addReal(realScalar s) {
+    public Scalar addReal(RealScalar s) {
         double num = 1.0 * numerator / denominator;
-        Scalar ans = new realScalar(num + s.getNumber());
+        Scalar ans = new RealScalar(num + s.getNumber());
         return ans;
     }
 
@@ -103,9 +103,9 @@ public class RationalScalar implements Scalar {
     }
 
     @Override
-    public Scalar mulReal(realScalar s) {
+    public Scalar mulReal(RealScalar s) {
         double num = 1.0 * numerator / denominator;
-        Scalar ans = new realScalar(num * s.getNumber());
+        Scalar ans = new RealScalar(num * s.getNumber());
         return ans;
     }
 

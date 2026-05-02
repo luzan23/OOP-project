@@ -8,10 +8,10 @@ public interface Scalar {
     int sign();
     Scalar addInteger(IntegerScalar s);
     Scalar addRational(RationalScalar s);
-    Scalar addReal(realScalar s);
+    Scalar addReal(RealScalar s);
     Scalar mulInteger(IntegerScalar s);
     Scalar mulRational(RationalScalar s);
-    Scalar mulReal(realScalar s);
+    Scalar mulReal(RealScalar s);
     @Override
     boolean equals(Object o);
     @Override
