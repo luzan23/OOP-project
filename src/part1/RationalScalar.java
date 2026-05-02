@@ -1,4 +1,4 @@
-package assignment1;
+package part1;
 
 public class RationalScalar implements Scalar {
     private int numerator;

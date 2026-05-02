@@ -1,4 +1,4 @@
-package assignment1;
+package part1;
 import java.util.*;
 
 public class Polynomial {

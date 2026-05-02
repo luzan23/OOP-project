@@ -1,4 +1,4 @@
-package assignment1;
+package part1;
 
 public class realScalar implements Scalar {
     private double number;

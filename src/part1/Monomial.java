@@ -1,4 +1,4 @@
-package assignment1;
+package part1;
 public class Monomial {
 
     private int exponent;

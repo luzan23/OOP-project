@@ -1,4 +1,4 @@
-package assignment1;
+package part1;
 
 public interface Scalar {
     Scalar add(Scalar s);
