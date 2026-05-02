@@ -60,8 +60,8 @@ public class IntegerScalar implements Scalar {
     }
 
     @Override
-    public Scalar addReal(realScalar s) {
-        Scalar ans = new realScalar(s.getNumber() +number );
+    public Scalar addReal(RealScalar s) {
+        Scalar ans = new RealScalar(s.getNumber() +number );
         return ans;
     }
 
@@ -78,8 +78,8 @@ public class IntegerScalar implements Scalar {
     }
 
     @Override
-    public Scalar mulReal(realScalar s) {
-        Scalar ans = new realScalar(s.getNumber() * number );
+    public Scalar mulReal(RealScalar s) {
+        Scalar ans = new RealScalar(s.getNumber() * number );
         return ans;
     }
 

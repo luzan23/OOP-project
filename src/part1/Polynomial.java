@@ -1,4 +1,5 @@
 package part1;
+
 import java.util.*;
 
 public class Polynomial {
@@ -17,20 +18,23 @@ public class Polynomial {
         Polynomial poly=new Polynomial();
         String[] coefficients = input.split("\\s+");
         for (int i=0; i<coefficients.length; i++){
+            Scalar s;
             if(coefficients[i].contains("/")){
                 String[] frac = coefficients[i].split("/");
                 int numerator=Integer.parseInt(frac[0]);
                 int denominator=Integer.parseInt(frac[1]);
-                Scalar s= new RationalScalar(numerator, denominator);
-                Monomial mon=new Monomial(i, s);
-                poly.polynomial.add(mon);
+                s= new RationalScalar(numerator, denominator);
             }
-            else{
+            else if (coefficients[i].contains(".")){
+                double number = Double.parseDouble(coefficients[i]);
+                s=new RealScalar(number);
+            }
+            else {
                 int number = Integer.parseInt(coefficients[i]);
-                Scalar s=new IntegerScalar(number);
-                Monomial mon=new Monomial(i, s);
-                poly.polynomial.add(mon);
+                s = new IntegerScalar(number);
             }
+            Monomial mon=new Monomial(i, s);
+            poly.polynomial.add(mon);
         }
         return poly;
     }
