@@ -7,8 +7,7 @@
 #include <Person.h>
 
 
-class Grower : public Person { 
-{
+class Grower : public Person {
 private:
 	Gardener* gardener;
 
