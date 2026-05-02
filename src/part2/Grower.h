@@ -4,16 +4,18 @@
 #include <vector>  
 #include <Gardener.h>
 #include <FlowersBouquet.h>
->
+#include <Person.h>
 
-class Grower
+
+class Grower : public Person { 
 {
 private:
-	Gardener gardener;
+	Gardener* gardener;
 
-};
+	};
 public:
-	Grower(Gardener gardener)
-	FlowersBoquet* prepareOrder(std :: vector<std::string>) flowers)
+	Grower(std::string name ,Gardener* gardener)
+     FlowersBoquet* prepareOrder(std::vector<std::string>) flowers)
 }
+
 #endif // !Grower_H
