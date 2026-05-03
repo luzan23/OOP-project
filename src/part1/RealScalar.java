@@ -1,9 +1,9 @@
 package part1;
 
-public class realScalar implements Scalar {
+public class RealScalar implements Scalar {
     private double number;
 
-    public realScalar(double number){
+    public RealScalar(double number){
         this.number = number;
     }
     public double getNumber(){
@@ -23,7 +23,7 @@ public class realScalar implements Scalar {
 
     @Override
     public Scalar neg() {
-        Scalar ans = new realScalar(-1 * number);
+        Scalar ans = new RealScalar(-1 * number);
         return ans;
     }
 
@@ -33,7 +33,7 @@ public class realScalar implements Scalar {
         for (int i = 0; i < exponent; i++) {
             ans = ans * number;
         }
-        Scalar result = new realScalar(ans);
+        Scalar result = new RealScalar(ans);
         return result;
     }
 
@@ -49,39 +49,39 @@ public class realScalar implements Scalar {
 
     @Override
     public Scalar addInteger(IntegerScalar s) {
-        Scalar ans = new realScalar(s.getNumber() + number );
+        Scalar ans = new RealScalar(s.getNumber() + number );
         return ans;
     }
 
     @Override
     public Scalar addRational(RationalScalar s) {
         double num = 1.0 * s.getNumerator() /s.getDenominator();
-        Scalar ans = new realScalar(num + number);
+        Scalar ans = new RealScalar(num + number);
         return ans;
     }
 
     @Override
-    public Scalar addReal(realScalar s) {
-        Scalar ans = new realScalar(number + s.getNumber());
+    public Scalar addReal(RealScalar s) {
+        Scalar ans = new RealScalar(number + s.getNumber());
         return ans;
     }
 
     @Override
     public Scalar mulInteger(IntegerScalar s) {
-        Scalar ans = new realScalar(s.getNumber() * number );
+        Scalar ans = new RealScalar(s.getNumber() * number );
         return ans;
     }
 
     @Override
     public Scalar mulRational(RationalScalar s) {
         double num = 1.0 * s.getNumerator() / s.getDenominator();
-        Scalar ans = new realScalar(num * number);
+        Scalar ans = new RealScalar(num * number);
         return ans;
     }
 
     @Override
-    public Scalar mulReal(realScalar s) {
-        Scalar ans = new realScalar(number * s.getNumber());
+    public Scalar mulReal(RealScalar s) {
+        Scalar ans = new RealScalar(number * s.getNumber());
         return ans;
     }
     @Override
