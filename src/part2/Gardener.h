@@ -4,11 +4,9 @@
 #include <string>
 #include <vector>
 #include "FlowersBouquet.h"
+#include "Person.h"
 
-class Gardener {
-private:
-    std::string name;
-
+class Gardener : public Person{
 public:
     Gardener(std::string name);
 
