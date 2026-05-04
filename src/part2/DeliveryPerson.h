@@ -4,10 +4,7 @@
 #include "Person"
 #include "FlowersBouquet"
 
-class DeliveryPerson {
-private:
-    std::string name; 
-
+class DeliveryPerson : public Person {
 public:
     DeliveryPerson(std::string name);
 
