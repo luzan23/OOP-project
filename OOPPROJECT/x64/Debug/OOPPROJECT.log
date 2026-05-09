@@ -1,9 +1,7 @@
-﻿  Florist.cpp
+﻿  DeliveryPerson.cpp
+  Florist.cpp
   FlowerArranger.cpp
-  FlowersBouquet.cpp
+  Gardener.cpp
   Grower.cpp
-  main.cpp
-  Person.cpp
-  Wholesaler.cpp
   Generating Code...
-C:\Users\User\source\repos\luzan23\OOP-project\src\part2\FlowersBouquet.h(14,1): error C4716: 'FlowersBouquet::getFlowers': must return a value
+  OOPPROJECT.vcxproj -> C:\Users\User\source\repos\luzan23\OOP-project\x64\Debug\OOPPROJECT.exe

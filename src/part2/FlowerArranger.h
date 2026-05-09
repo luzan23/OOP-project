@@ -11,7 +11,6 @@ class FlowerArranger : public Person {
 
     public:
         FlowerArranger(std::string name);
-
         void arrangeFlowers(FlowersBouquet * bouquet);
     };
 

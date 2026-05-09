@@ -10,7 +10,7 @@ class FlowersBouquet {
     public:
 		FlowersBouquet(std::vector<std::string> Flowers);
 		void arrange();
-		std::vector<std::string> getFlowers() {
-		}
+		std::vector<std::string> getFlowers();
+		
 
 };
