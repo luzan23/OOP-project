@@ -11,10 +11,9 @@ class Grower : public Person {
 private:
 	Gardener* gardener;
 
-	};
 public:
-	Grower(std::string name ,Gardener* gardener)
-     FlowersBoquet* prepareOrder(std::vector<std::string>) flowers)
-}
+	Grower(std::string name, Gardener* gardener);
+	FlowersBouquet* prepareOrder(std::vector<std::string> flowers);
+};
 
 #endif // !Grower_H
