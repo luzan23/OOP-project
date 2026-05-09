@@ -1,12 +1,13 @@
+#include <iostream>
+#include <vector>
+#include <string>
 #include "Florist.h"
 #include "Person.h"
 #include "Wholesaler.h"
 #include "FlowerArranger.h"
 #include "DeliveryPerson.h"
 #include "FlowersBouquet.h"
-#include <iostream>
-#include <vector>
-#include <string>
+
 
 Florist::Florist(std::string name, Wholesaler* wholesaler, FlowerArranger* flowerArranger, DeliveryPerson* deliveryPerson) :
 	Person(name), wholesaler(wholesaler), flowerArranger(flowerArranger), deliveryPerson(deliveryPerson){}

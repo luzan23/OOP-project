@@ -1,5 +1,5 @@
-#ifndef Florsit_h
-#define Florist_h
+#pragma once 
+
 #include "Wholesaler.h"
 #include "FlowerArranger.h"
 #include "DeliveryPerson.h"
@@ -16,6 +16,5 @@ public:
 	Florist(std::string name, Wholesaler* wholesaler, FlowerArranger* flowerArranger, DeliveryPerson* deliveryPerson);
 	void acceptOrder(Person* recipient, std::vector<std::string> flowers);
 };
-#endif // !Florsit.h
 
 

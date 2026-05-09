@@ -1,5 +1,5 @@
-#ifndef FLOWERSBOUQUET_H
-#define FLOWERSBOUWUET_H
+#pragma once 
+
 
 #include <vector>
 #include <string>
@@ -14,4 +14,3 @@ class FlowersBouquet {
 		}
 
 };
-#endif // !FLOWERSBOUQUET_H

@@ -1,0 +1,9 @@
+﻿  Florist.cpp
+  FlowerArranger.cpp
+  FlowersBouquet.cpp
+  Grower.cpp
+  main.cpp
+  Person.cpp
+  Wholesaler.cpp
+  Generating Code...
+C:\Users\User\source\repos\luzan23\OOP-project\src\part2\FlowersBouquet.h(14,1): error C4716: 'FlowersBouquet::getFlowers': must return a value

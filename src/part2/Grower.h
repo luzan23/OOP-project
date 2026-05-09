@@ -1,5 +1,5 @@
-#ifndef Grower_H
-#define Grower_H
+#pragma once 
+
 #include <string>  
 #include <vector>  
 #include "Gardener.h"
@@ -16,4 +16,3 @@ public:
 	FlowersBouquet* prepareOrder(std::vector<std::string> flowers);
 };
 
-#endif // !Grower_H

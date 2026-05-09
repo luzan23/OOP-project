@@ -39,6 +39,9 @@
     <ClCompile Include="src\part2\Wholesaler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\part2\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\part2\DeliveryPerson.h">
@@ -48,9 +51,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\part2\FlowerArranger.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\part2\FlowerBouquet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\part2\Gardener.h">
@@ -63,6 +63,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\part2\Wholesaler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\part2\FlowersBouquet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

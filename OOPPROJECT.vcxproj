@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -125,6 +125,7 @@
     <ClCompile Include="src\part2\FlowersBouquet.cpp" />
     <ClCompile Include="src\part2\Gardener.cpp" />
     <ClCompile Include="src\part2\Grower.cpp" />
+    <ClCompile Include="src\part2\main.cpp" />
     <ClCompile Include="src\part2\Person.cpp" />
     <ClCompile Include="src\part2\Wholesaler.cpp" />
   </ItemGroup>

@@ -1,5 +1,4 @@
-#ifndef FLOWERARRANGER_H
-#define FLOWERARRANGER_H
+#pragma once 
 
 #include <string>
 #include "FlowersBouquet.h"
@@ -17,4 +16,3 @@ class FlowerArranger : public Person {
     };
 
 
-#endif

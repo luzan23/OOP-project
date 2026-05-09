@@ -1,5 +1,4 @@
-#ifndef DELIVERYPERSON_H
-#define DELIVERYPERSON_H
+#pragma once 
 
 #include "Person.h"
 #include "FlowersBouquet.h"
@@ -11,4 +10,3 @@ public:
     void deliver(Person* recipient, FlowersBouquet* bouquet);
 };
 
-#endif // !DELIVERYPERSON_H

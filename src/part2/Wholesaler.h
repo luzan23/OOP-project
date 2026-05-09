@@ -1,5 +1,5 @@
-#ifndef Wholesaler_H
-#define Wholesaler_H
+#pragma once 
+
 #include <string>
 #include <vector>  
 #include "Grower.h"
@@ -16,4 +16,3 @@ public:
 	FlowersBouquet* acceptOrder(std::vector<std::string> flowers);
 
 };
-#endif // !Wholesaler_H

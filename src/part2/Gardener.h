@@ -1,5 +1,5 @@
-#ifndef GARDENER_H
-#define GARDENER_H
+#pragma once 
+
 
 #include <string>
 #include <vector>
@@ -15,4 +15,3 @@ public:
 
 };
 
-#endif

@@ -1,9 +1,8 @@
-#ifndef Person_H
-#define Person_H
+#pragma once 
+
 #include <string>  
 #include <vector>  
 #include "FlowersBouquet.h"
-#include "Florist.h"
 class Florist;
 class Person {
 private:
@@ -14,5 +13,4 @@ public:
     void acceptFlowers(FlowersBouquet* bouquet);
     std::string getName();
 };
-#endif // !Person_H
 
