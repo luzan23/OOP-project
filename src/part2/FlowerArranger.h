@@ -5,7 +5,12 @@
 #include "FlowersBouquet.h"
 #include "Person.h"
 
+<<<<<<< HEAD
 class FlowerArranger : public Person{
+=======
+class FlowerArranger : public Person {
+    {
+>>>>>>> bf264bc53fa1051023b2e49fea3dbfbbba45f072
 private:
     std::string name; 
 
