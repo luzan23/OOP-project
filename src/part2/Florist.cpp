@@ -17,7 +17,7 @@ Florist::Florist(std::string name, Wholesaler* wholesaler, FlowerArranger* flowe
 		std::cout<< "Wholesaler " << wholesaler->getName() << " returns flowers to Florist "<< getName()<<std::endl;
 		std::cout<< "Florist " << getName() << " request flowers arrangement from Flower Arranger "<< flowerArranger->getName()<<std::endl;
 		flowerArranger->arrangeFlowers(bouquet);
-		std::cout<< "Flower Arranger " <<flowerArranger->getName() << " returns arranged flowers to Florist " name << std::endl;
+		std::cout<< "Flower Arranger " <<flowerArranger->getName() << " returns arranged flowers to Florist "<< getName() << std::endl;
 		deliveryPerson->deliver(recipient, bouquet);
 
 	}

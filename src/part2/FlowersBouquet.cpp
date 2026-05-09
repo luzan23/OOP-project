@@ -10,6 +10,3 @@ FlowersBouquet::FlowersBouquet(std::vector<std::string> bouquet)
 void FlowersBouquet::arrange() {
     is_arranged = true;
 }
-std::vector<std::string> FlowersBouquet::getFlowers() {
-    return bouquet; 
-}

@@ -132,7 +132,7 @@
     <ClInclude Include="src\part2\DeliveryPerson.h" />
     <ClInclude Include="src\part2\Florist.h" />
     <ClInclude Include="src\part2\FlowerArranger.h" />
-    <ClInclude Include="src\part2\FlowerBouquet.h" />
+    <ClInclude Include="src\part2\FlowersBouquet.h" />
     <ClInclude Include="src\part2\Gardener.h" />
     <ClInclude Include="src\part2\Grower.h" />
     <ClInclude Include="src\part2\Person.h" />
