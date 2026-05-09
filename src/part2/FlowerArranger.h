@@ -3,10 +3,8 @@
 
 #include <string>
 #include "FlowersBouquet.h"
-#include "Person.h"
 
-class FlowerArranger : public Person {
-    {
+class FlowerArranger {
 private:
     std::string name; 
 
