@@ -13,19 +13,19 @@
 #include "DeliveryPerson.h"
 
 int main() {
-    Person* chris = new Person("chris");
-    Person* robin = new Person("robin");
-    Gardener* gardener = new Gardener("harry");
-    Grower* grower = new Grower("ron" , gardener);
-    Wholesaler* wholesaler = new Wholesaler("jon", grower);
+    Person* Hagrid = new Person("Hagrid");
+    Person* Dumbledore = new Person("Dumbledore");
+    Gardener* gardener = new Gardener("Harry");
+    Grower* grower = new Grower("Ron" , gardener);
+    Wholesaler* wholesaler = new Wholesaler("Draco", grower);
     FlowerArranger* arranger = new FlowerArranger("yaara");
     DeliveryPerson* delivery = new DeliveryPerson("luzan");
-    Florist* florist = new Florist("matan", wholesaler, arranger, delivery);
+    Florist* florist = new Florist("Hermione", wholesaler, arranger, delivery);
     std::vector<std::string> flowers = { "Roses", "Violets","Lilys", "Tulips","Sunflowers" };
-    chris->orderFlowers(florist, robin, flowers);
+    Hagrid->orderFlowers(florist, Dumbledore, flowers);
 
-    delete chris;
-    delete robin;
+    delete Hagrid;
+    delete Dumbledore;
     delete florist;
     delete wholesaler;
     delete grower;

@@ -1,7 +1,6 @@
 ﻿  DeliveryPerson.cpp
   Florist.cpp
-  FlowerArranger.cpp
-  Gardener.cpp
   Grower.cpp
+  Wholesaler.cpp
   Generating Code...
-  OOPPROJECT.vcxproj -> C:\Users\User\source\repos\luzan23\OOP-project\x64\Debug\OOPPROJECT.exe
+  OOPPROJECT.vcxproj -> C:\Users\luzan\Source\Repos\OOP-project\x64\Debug\OOPPROJECT.exe
