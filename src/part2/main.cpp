@@ -17,9 +17,9 @@ int main() {
     Person* Dumbledore = new Person("Dumbledore");
     Gardener* gardener = new Gardener("Harry");
     Grower* grower = new Grower("Ron" , gardener);
-    Wholesaler* wholesaler = new Wholesaler("Draco", grower);
-    FlowerArranger* arranger = new FlowerArranger("yaara");
-    DeliveryPerson* delivery = new DeliveryPerson("luzan");
+    Wholesaler* wholesaler = new Wholesaler("Luzan", grower);
+    FlowerArranger* arranger = new FlowerArranger("Yaara");
+    DeliveryPerson* delivery = new DeliveryPerson("Draco");
     Florist* florist = new Florist("Hermione", wholesaler, arranger, delivery);
     std::vector<std::string> flowers = { "Roses", "Violets","Lilys", "Tulips","Sunflowers" };
     Hagrid->orderFlowers(florist, Dumbledore, flowers);

@@ -33,7 +33,9 @@ void Person::acceptFlowers(FlowersBouquet* bouquet) {
         }
     }
     std::cout << "." << std::endl;
+    delete bouquet;
 }
+
 std::string  Person::getName() {
 	return name;
 }

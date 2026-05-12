@@ -11,7 +11,7 @@ FlowerArranger::FlowerArranger(std::string name) :Person(name) {
 }
 
 void FlowerArranger::arrangeFlowers(FlowersBouquet* bouquet){
-	std::cout << "Flower Arranger " << getName() << " arranges the flowers" << std::endl;
+	std::cout << "Flower Arranger " << getName() << " arranges the flowers." << std::endl;
 	bouquet->arrange(); 
 }
 
