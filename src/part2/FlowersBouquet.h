@@ -1,5 +1,5 @@
-#ifndef FLOWERSBOUQUET_H
-#define FLOWERSBOUWUET_H
+#pragma once 
+
 
 #include <vector>
 #include <string>
@@ -10,5 +10,7 @@ class FlowersBouquet {
     public:
 		FlowersBouquet(std::vector<std::string> Flowers);
 		void arrange();
+		std::vector<std::string> getFlowers();
+		
+
 };
-#endif // !FLOWERSBOUQUET_H

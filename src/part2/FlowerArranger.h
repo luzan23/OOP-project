@@ -1,17 +1,17 @@
-#ifndef FLOWERARRANGER_H
-#define FLOWERARRANGER_H
+#pragma once 
 
 #include <string>
-#include "FlowersBouquet"
+#include "FlowersBouquet.h"
+#include "Person.h"
 
-class FlowerArranger {
-private:
-    std::string name; 
 
-public:
-    FlowerArranger(std::string name);
+class FlowerArranger : public Person {
+    private:
+        std::string name;
 
-    void arrangeFlowers(FlowersBouquet* bouquet);
-};
+    public:
+        FlowerArranger(std::string name);
+        void arrangeFlowers(FlowersBouquet * bouquet);
+    };
 
-#endif
+

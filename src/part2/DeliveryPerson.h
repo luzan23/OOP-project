@@ -1,16 +1,12 @@
-#ifndef DELIVERYPERSON_H
-#define DELIVERYPERSON_H
+#pragma once 
 
-#include "Person"
-#include "FlowersBouquet"
+#include "Person.h"
+#include "FlowersBouquet.h"
 
-class DeliveryPerson {
-private:
-    std::string name; 
-
+class DeliveryPerson : public Person {
 public:
     DeliveryPerson(std::string name);
 
     void deliver(Person* recipient, FlowersBouquet* bouquet);
+};
 
-#endif // !DELIVERYPERSON_H
