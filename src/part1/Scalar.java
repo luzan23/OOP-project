@@ -1,19 +1,26 @@
 package part1;
 
-public interface Scalar {
-    Scalar add(Scalar s);
-    Scalar mul(Scalar s);
-    Scalar neg();
-    Scalar power(int exponent);
-    int sign();
-    Scalar addInteger(IntegerScalar s);
-    Scalar addRational(RationalScalar s);
-    Scalar addReal(RealScalar s);
-    Scalar mulInteger(IntegerScalar s);
-    Scalar mulRational(RationalScalar s);
-    Scalar mulReal(RealScalar s);
+public abstract class Scalar {
+    public abstract Scalar add(Scalar s);
+    public abstract Scalar mul(Scalar s);
+    public abstract Scalar neg();
+    public abstract Scalar power(int exponent);
+    public abstract int sign();
+    public abstract Scalar addInteger(IntegerScalar s);
+    public abstract Scalar addRational(RationalScalar s);
+    public abstract Scalar addReal(RealScalar s);
+    public abstract Scalar mulInteger(IntegerScalar s);
+    public abstract Scalar mulRational(RationalScalar s);
+    public abstract Scalar mulReal(RealScalar s);
+
     @Override
-    boolean equals(Object o);
+    public boolean equals(Object o){
+        if (o instanceof Scalar) {
+            Scalar other = (Scalar) o;
+            return (this.add(other.neg()).sign() ==0);
+        }
+        return false;
+    }
     @Override
-    String toString();
+    public abstract String toString();
 }

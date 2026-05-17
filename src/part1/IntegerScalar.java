@@ -1,6 +1,6 @@
 package part1;
 
-public class IntegerScalar implements Scalar {
+public class IntegerScalar extends Scalar {
     private int number;
 
     public IntegerScalar(int number) {
@@ -23,25 +23,23 @@ public class IntegerScalar implements Scalar {
 
     @Override
     public Scalar neg() {
-        Scalar ans = new IntegerScalar(-1 * number);
-        return ans;
+        return new IntegerScalar(-1 * getNumber());
     }
 
     @Override
     public Scalar power(int exponent) {
         int ans = 1;
         for (int i = 0; i < exponent; i++) {
-            ans = ans * number;
+            ans = ans * getNumber();
         }
-        Scalar result = new IntegerScalar(ans);
-        return result;
+        return new IntegerScalar(ans);
     }
 
     @Override
     public int sign() {
-        if (number > 0)
+        if (getNumber() > 0)
             return 1;
-        if (number < 0)
+        else if (getNumber() < 0)
             return -1;
         else
             return 0;
@@ -49,62 +47,42 @@ public class IntegerScalar implements Scalar {
 
     @Override
     public Scalar addInteger(IntegerScalar s) {
-        Scalar ans = new IntegerScalar(number+s.getNumber());
-        return ans;
+        return new IntegerScalar(getNumber()+s.getNumber());
     }
 
     @Override
     public Scalar addRational(RationalScalar s) {
-        Scalar ans = new RationalScalar(s.getNumerator()+number*s.getDenominator(),s.getDenominator());
-        return ans;
+        int newNum = s.getNumerator()+getNumber()*s.getDenominator();
+        RationalScalar ans = new RationalScalar(newNum,s.getDenominator());
+        return ans.reduce();
     }
 
     @Override
     public Scalar addReal(RealScalar s) {
-        Scalar ans = new RealScalar(s.getNumber() +number );
-        return ans;
+        return new RealScalar(s.getNumber()+getNumber());
     }
 
     @Override
     public Scalar mulInteger(IntegerScalar s) {
-        IntegerScalar ans =new IntegerScalar(s.getNumber()*number);
-        return ans;
+        return new IntegerScalar(s.getNumber()*getNumber());
     }
 
     @Override
     public Scalar mulRational(RationalScalar s) {
-        RationalScalar ans = new RationalScalar(number*s.getNumerator(),s.getDenominator());
+        RationalScalar ans = new RationalScalar(getNumber()*s.getNumerator(),s.getDenominator());
         return ans.reduce();
     }
 
     @Override
     public Scalar mulReal(RealScalar s) {
-        Scalar ans = new RealScalar(s.getNumber() * number );
-        return ans;
+        return new RealScalar(s.getNumber() * getNumber() );
     }
-
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof RationalScalar) {
-            int num = ((RationalScalar) obj).getNumerator();
-            int den = ((RationalScalar) obj).getDenominator();
-            return (num%den==0 && num/den == number);
-        } else {
-            if (obj instanceof IntegerScalar) {
-                return ((IntegerScalar) obj).getNumber() == getNumber();
-            }
-        }
-        return false;
+    public String toString() {
+        return "" +getNumber();
 
     }
+}
 
-        @Override
-        public String toString() {
-        String ans="";
-        ans+="" + number ;
-        return ans;
-        }
-
-    }
 

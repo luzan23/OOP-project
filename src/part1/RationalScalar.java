@@ -1,6 +1,6 @@
 package part1;
 
-public class RationalScalar implements Scalar {
+public class RationalScalar extends Scalar {
     private int numerator;
     private int denominator;
 
@@ -32,17 +32,18 @@ public class RationalScalar implements Scalar {
     @Override
     public Scalar neg() {
         Scalar minus = new IntegerScalar(-1);
-        Scalar ans = this.mul(minus);
-        return ans;
+        return this.mul(minus);
     }
 
     @Override
     public Scalar power(int exponent) {
-        double num= getNumerator();
-        double den= getDenominator();
-        int newNum= (int) Math.pow(num, exponent);
-        int newDen= (int) Math.pow(den, exponent);
-        RationalScalar ans= new RationalScalar(newNum, newDen);
+        int numAcc=1;
+        int denAcc=1;
+        for(int i=0; i<exponent; i++){
+            numAcc=numAcc*getNumerator();
+            denAcc=denAcc*getDenominator();
+        }
+        RationalScalar ans= new RationalScalar(numAcc, denAcc);
         return ans.reduce();
     }
 
@@ -88,9 +89,8 @@ public class RationalScalar implements Scalar {
 
     @Override
     public Scalar addReal(RealScalar s) {
-        double num = 1.0 * numerator / denominator;
-        Scalar ans = new RealScalar(num + s.getNumber());
-        return ans;
+        double result = getNumerator()+(s.getNumber()*getDenominator());
+        return new RealScalar(result/getDenominator());
     }
 
     @Override
@@ -104,9 +104,8 @@ public class RationalScalar implements Scalar {
 
     @Override
     public Scalar mulReal(RealScalar s) {
-        double num = 1.0 * numerator / denominator;
-        Scalar ans = new RealScalar(num * s.getNumber());
-        return ans;
+        double result = (s.getNumber()*getNumerator())/getDenominator();
+        return new RealScalar(result);
     }
 
     @Override
@@ -115,7 +114,7 @@ public class RationalScalar implements Scalar {
         return ans.reduce();
     }
 
-    public Scalar reduce(){
+    public RationalScalar reduce(){
         int gcd = gcd(getNumerator(), getDenominator());
         int newNum=getNumerator()/gcd;
         int newDen=getDenominator()/gcd;
@@ -125,14 +124,7 @@ public class RationalScalar implements Scalar {
             newDen = newDen * -1;
         }
 
-        Scalar ans = new RationalScalar(newNum, newDen);
-        if(newDen==1){
-            ans = new IntegerScalar(newNum);
-        }
-        else if(newDen==newNum){
-            ans=new IntegerScalar(1);
-        }
-        return ans;
+        return new RationalScalar(newNum, newDen);
     }
 
     private int gcd(int a, int b){
@@ -142,17 +134,13 @@ public class RationalScalar implements Scalar {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof Scalar) {
-            Scalar other = (Scalar) obj;
-            return (this.add(other.neg()).sign() ==0);
-        }
-        return false;
-    }
-
-    @Override
     public String toString() {
-        String ans = "("+this.numerator + "/" + this.denominator+")";
-        return ans;
+        RationalScalar reduced = reduce();
+
+        if (reduced.getDenominator() == 1) {
+            return "" + reduced.getNumerator();
+        }
+
+        return reduced.getNumerator() + "/" + reduced.getDenominator();
     }
 }

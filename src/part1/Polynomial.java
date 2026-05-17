@@ -1,5 +1,6 @@
 package part1;
 
+import java.awt.event.ItemEvent;
 import java.util.*;
 
 public class Polynomial {
@@ -8,6 +9,10 @@ public class Polynomial {
 
     public Polynomial(){
         this.polynomial= new ArrayList<>();
+    }
+
+    public Collection<Monomial> getPolynomial(){
+        return this.polynomial;
     }
 
     public Polynomial(String input){
@@ -34,89 +39,85 @@ public class Polynomial {
                 s = new IntegerScalar(number);
             }
             Monomial mon=new Monomial(i, s);
-            poly.polynomial.add(mon);
+            Scalar zero = new IntegerScalar(0);
+            if(!mon.getCoefficient().equals(zero))
+                poly.polynomial.add(mon);
         }
         return poly;
     }
 
     public Polynomial add(Polynomial p){
-        Polynomial ans=new Polynomial();
+        Polynomial added=new Polynomial();
+        TreeMap<Integer, Monomial> mergedTerms = new TreeMap<>();
 
-        Iterator<Monomial> thisItr=this.polynomial.iterator();
-        Iterator<Monomial> pItr=p.polynomial.iterator();
-        Monomial currThis;
-        Monomial currP;
-
-        while(thisItr.hasNext() && pItr.hasNext()){
-            currThis=thisItr.next();
-            currP=pItr.next();
-            if(currP.getExponent()<currThis.getExponent())
-                ans.polynomial.add(currP);
-            else if(currP.getExponent()>currThis.getExponent())
-                ans.polynomial.add(currThis);
-            else ans.polynomial.add(currP.add(currThis));
+        for(Monomial currGiven : p.getPolynomial()){
+            Integer currExpKey = currGiven.getExponent();
+            if(mergedTerms.containsKey(currExpKey)) {
+                Monomial oldVal = mergedTerms.get(currExpKey);
+                Monomial sumRes = currGiven.add(oldVal);
+                Scalar zero = new IntegerScalar(0);
+                if(!sumRes.getCoefficient().equals(zero))
+                    mergedTerms.put(currExpKey, sumRes);
+                else mergedTerms.remove(currExpKey);
+            }
+            else mergedTerms.put(currExpKey, currGiven);
         }
 
-        while(thisItr.hasNext()){
-            currThis=thisItr.next();
-            ans.polynomial.add(currThis);
+        for (Monomial currThis : getPolynomial()){
+            Integer currExpKey = currThis.getExponent();
+            if(mergedTerms.containsKey(currExpKey)) {
+                Monomial oldVal = mergedTerms.get(currExpKey);
+                Monomial sumRes = currThis.add(oldVal);
+                Scalar zero = new IntegerScalar(0);
+                if(!sumRes.getCoefficient().equals(zero))
+                    mergedTerms.put(currExpKey, sumRes);
+                else mergedTerms.remove(currExpKey);
+            }
+            else mergedTerms.put(currExpKey, currThis);
         }
 
-        while(pItr.hasNext()){
-            currP=pItr.next();
-            ans.polynomial.add(currP);
-        }
-        return ans;
+        added.polynomial.addAll(mergedTerms.values());
+        return added;
     }
+
 
     public Polynomial mul(Polynomial p){
         Polynomial multi=new Polynomial();
         TreeMap<Integer, Monomial> mergedTerms = new TreeMap<>();
 
-        for (Monomial currGiven: p.polynomial) {
-            for (Monomial currHere : this.polynomial) {
+        for (Monomial currGiven: p.getPolynomial()) {
+            for (Monomial currHere : getPolynomial()) {
                 Monomial result = currGiven.mul(currHere);
                 int resExp = result.getExponent();
                 if (mergedTerms.containsKey(resExp)) {
                     Monomial oldVal = mergedTerms.get(resExp);
                     Monomial sumRes = result.add(oldVal);
-                    mergedTerms.put(resExp, sumRes);
-                } else {
-                    mergedTerms.put(resExp,result);
-
-                }
-            }
-        }
-        if (!mergedTerms.isEmpty()) {
-            int maxExp = mergedTerms.lastKey();
-            for (int i = 0; i <= maxExp; i++) {
-                if (mergedTerms.containsKey(i)) {
-                    Monomial current = mergedTerms.get(i);
-                    multi.polynomial.add(current);
-                } else {
                     Scalar zero = new IntegerScalar(0);
-                    Monomial zeroMon = new Monomial(i, zero);
-                    multi.polynomial.add(zeroMon);
+                    if(!sumRes.getCoefficient().equals(zero))
+                        mergedTerms.put(resExp, sumRes);
+                    else mergedTerms.remove(resExp);
                 }
+                else mergedTerms.put(resExp,result);
             }
         }
+        multi.polynomial.addAll(mergedTerms.values());
         return  multi;
     }
 
     public Scalar evaluate(Scalar s){
         Scalar ans =new IntegerScalar(0);
-        for(Monomial mono : this.polynomial){
+        for(Monomial mono : getPolynomial()){
            ans= ans.add(mono.evaluate(s));
         }
         return ans;
     }
 
     public Polynomial derivative(){
-        Polynomial derPol=new Polynomial();
-        for(Monomial mono : this.polynomial){
-            Scalar exp=new IntegerScalar(mono.getExponent());
-            Monomial drvMon=new Monomial(mono.getExponent()-1, exp.mul(mono.getCoefficient()));
-            if(drvMon.getCoefficient().sign()!=0){
+        Polynomial derPol = new Polynomial();
+        for(Monomial mono : getPolynomial()) {
+            Monomial drvMon = mono.derivative();
+            Scalar zero = new IntegerScalar(0);
+            if (!drvMon.getCoefficient().equals(zero)) {
                 derPol.polynomial.add(drvMon);
             }
         }
@@ -130,7 +131,7 @@ public class Polynomial {
                 return false;
             else {
                 Iterator<Monomial> polObj = ((Polynomial) obj).polynomial.iterator();
-                for (Monomial monomial : this.polynomial) {
+                for (Monomial monomial : getPolynomial()) {
                     Monomial monoObj = polObj.next();
                     if (!monoObj.equals(monomial))
                         return false;
@@ -143,19 +144,21 @@ public class Polynomial {
 
     @Override
     public String toString() {
-        String ans="";
-        Iterator<Monomial> itr= polynomial.iterator();
-        Monomial curr;
-        int counter=0;
-        while(counter< polynomial.size()-1 && itr.hasNext()){
-            curr=itr.next();
-            if(curr.sign()==1)
-                ans="+"+curr+ans;
-            else ans= curr + ans;
-            counter++;
+        if (polynomial.isEmpty())
+            return "0";
+
+        Iterator<Monomial> iter = this.polynomial.iterator();
+        Monomial curr=iter.next();
+        String ans = curr.toString();
+
+        while(iter.hasNext()){
+            curr=iter.next();
+
+            if(curr.sign()==-1)
+                ans += curr.toString();
+            else if(curr.sign()==1)
+                ans += "+" +curr.toString();
         }
-        curr=itr.next();
-        ans=curr+ans;
         return ans;
     }
 }

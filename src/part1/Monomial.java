@@ -18,38 +18,35 @@ public class Monomial {
     }
 
     public Monomial add(Monomial m){
-        if (exponent != m.exponent)
+        if (getExponent() != m.getExponent())
             return null;
-        Scalar s = coefficient.add(m.coefficient);
-        Monomial ans = new Monomial(exponent,s);
-        return ans;
+        Scalar s = getCoefficient().add(m.getCoefficient());
+        return new Monomial(getExponent(),s);
     }
 
     public Monomial mul(Monomial m){
-        Scalar s = coefficient.mul(m.coefficient);
-        int exp = exponent + m.exponent;
-        Monomial ans = new Monomial(exp,s);
-        return ans;
+        Scalar s = getCoefficient().mul(m.getCoefficient());
+        int exp = getExponent() + m.getExponent();
+        return new Monomial(exp,s);
     }
 
     public Scalar evaluate(Scalar s){
-        Scalar pow = new IntegerScalar(1);
-        for (int i=0; i<exponent; i++)
-            pow = pow.mul(s);
-        Scalar ans = pow.mul(coefficient);
-        return ans;
+        return this.coefficient.mul(s.power(getExponent()));
     }
 
     public  Monomial derivative(){
-        int exp = exponent-1;
-        Scalar s = new IntegerScalar(exponent);
-        Scalar coef = coefficient.mul(s);
-        Monomial ans = new Monomial(exp,coef);
-        return ans;
+        if(getExponent()==0){
+            Scalar zero = new IntegerScalar(0);
+            return new Monomial(0,zero);
+        }
+        int exp = getExponent()-1;
+        Scalar s = new IntegerScalar(getExponent());
+        Scalar coef = getCoefficient().mul(s);
+        return new Monomial(exp,coef);
     }
 
     public int sign(){
-        return coefficient.sign();
+        return this.coefficient.sign();
     }
 
     @Override
@@ -58,20 +55,35 @@ public class Monomial {
             return false;
         else{
             Monomial other = (Monomial) obj;
-            return other.exponent==exponent && other.coefficient.equals(coefficient);
+            return other.getExponent()==getExponent() && other.getCoefficient().equals(getCoefficient());
         }
     }
 
     @Override
     public String toString() {
+        Scalar one=new IntegerScalar(1);
+        Scalar minusOne=new IntegerScalar(-1);
+
         if(getCoefficient().sign()==0)
             return "0";
-        if(getExponent()==0)
-            return coefficient.toString();
-        Scalar one=new IntegerScalar(1);
-        if(getCoefficient().equals(one)){
-            return "x^"+getExponent();
+
+        else if(getExponent()==0)
+            return this.coefficient.toString();
+
+        else if(getExponent()==1){
+            if(getCoefficient().equals(one))
+                return "x";
+            if(getCoefficient().equals(minusOne))
+                return "-x";
+            else  return this.coefficient.toString() + "x";
         }
-        else return coefficient.toString() +"x"+"^"+ getExponent();
+
+        else if(getCoefficient().equals(one))
+            return "x^"+getExponent();
+
+        else if(getCoefficient().equals(minusOne))
+            return "-x^"+getExponent();
+
+        else return this.coefficient.toString() +"x"+"^"+ getExponent();
     }
 }
